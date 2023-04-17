@@ -92,6 +92,7 @@
         });
 
         function show_bucket() {
+            $('#bucket-list').empty()
             $.ajax({
                 type: "GET",
                 url: "/bucket",
@@ -103,7 +104,7 @@
                         let num = rows[i]['num']
                         let done = rows[i]['done']
 
-                        let temp_html = ''
+                        let temp_html = '';
                         if (done === 0) {
                             temp_html = `<li>
                                             <h2>✅ ${bucket}</h2>
@@ -156,11 +157,9 @@
             $.ajax({
                 type: "POST",
                 url: "/bucket/done",
-                data: {
-                    nume_give: 'num'
-                },
+                data: { num_give: num },
                 success: function (response) {
-                    alert(response["msg"])
+                    alert(response["msg"]);
                     window.location.reload()
                 }
             });

@@ -36,10 +36,10 @@ def bucket_post():
 def bucket_done():
     num_receive = request.form['num_give']
     db.bucket.update_one(
-        {'num': int(num_receive)},
-        {'$set': {'done': 1}},
+        { 'num': int(num_receive) },
+        { '$set': { 'done': 1}}
     )
-    return jsonify({'msg': 'POST /bucket/done request!'})
+    return jsonify({'msg': 'Update Done'})
 
 @app.route("/bucket", methods=["GET"])
 def bucket_get():
